@@ -32,3 +32,24 @@ class Produto:
 
     def exibir(self):
         print(f"{self.nome} | R$ {self.preco:.2f} | estoque: {self.estoque}")
+
+    def repor(self, qtd):
+        if qtd <= 0:
+            print("Reposição recusada: a quantidade deve ser positiva.")
+            return False
+
+        self.estoque += qtd
+        print(f"Reposição realizada: {qtd} unidade(s) adicionada(s).")
+        return True
+
+    def vender(self, qtd):
+        if qtd <= 0:
+            print("Venda recusada: a quantidade deve ser positiva.")
+            return False
+        if qtd > self.estoque:
+            print("Venda recusada: estoque insuficiente.")
+            return False
+
+        self.estoque -= qtd
+        print(f"Venda realizada: {qtd} unidade(s).")
+        return True
